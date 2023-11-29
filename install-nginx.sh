@@ -77,10 +77,14 @@ http {
       proxy_pass         http://127.0.0.1:8082/stop;
     }
 
-    error_page 502 ${NGINX_HTML_FILE};  # Use custom 502.html page
+    error_page 502 /502.html;  # Use custom 502.html page
+    location = /502.html {
+        root ${NGINX_HTML_DIR};  # Adjust the path based on your setup
+        internal;
+    }
   }
 }
 EOF
 
-# Check if the configuration has changed, and restart Nginx if needed
+# Check if the configuration has changed, and restart Nginx if necessary
 echo ${NGINX_CONF_MD5SUM} | md5sum -c || (echo "Config changed, restarting Nginx"; systemctl restart nginx)
