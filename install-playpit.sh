@@ -112,4 +112,4 @@ docker run -d \
     sbeliakou/playpit-manager ||
 echo
 
-# docker exec playpit-manager /start.sh k8s
+docker exec playpit-manager /start.sh k8s
