@@ -3,7 +3,7 @@
 ```
 #!/bin/bash
 
-# PlayPit deployment
+# PlayPit Deployment
 export EXTERNAL_NAME=$(curl -s checkip.amazonaws.com)
 curl -s https://raw.githubusercontent.com/HarrierPanels/k8s/main/deploy.sh | bash
 ```
@@ -19,7 +19,7 @@ swapon /swapfile
 swapon -s
 echo '/swapfile swap swap defaults 0 0' | tee -a /etc/fstab
 
-# PlayPit deployment
+# PlayPit Deployment
 export EXTERNAL_NAME=$(curl -s checkip.amazonaws.com)
 curl -s https://raw.githubusercontent.com/HarrierPanels/k8s/main/deploy.sh | bash
 ```
