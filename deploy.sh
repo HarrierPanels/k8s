@@ -6,7 +6,7 @@ else
   CMD=""
 fi
 
-BASE_URL="https://raw.githubusercontent.com/HarrierPanels/ks8/main"
+BASE_URL="https://raw.githubusercontent.com/HarrierPanels/k8s/main"
 SCRIPTS=("install-docker.sh" "install-nginx.sh" "install-playpit.sh")
 
 for SCRIPT in "${SCRIPTS[@]}"; do
