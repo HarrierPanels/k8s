@@ -16,6 +16,23 @@ fi
 systemctl enable nginx
 
 NGINX_CONF_MD5SUM="$(md5sum /etc/nginx/nginx.conf)"
+NGINX_HTML_DIR="/usr/share/nginx/html"
+NGINX_HTML_FILE="${NGINX_HTML_DIR}/502.html"
+
+# Create or update the 502.html file
+cat << EOF > ${NGINX_HTML_FILE}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PlayPit Labs shutting down</title>
+</head>
+<body>
+  <h1>PlayPit Labs shutting down</h1>
+</body>
+</html>
+EOF
+
+# Update the Nginx configuration
 cat << EOF > /etc/nginx/nginx.conf
 events {
   worker_connections 1024;
@@ -43,9 +60,6 @@ http {
     chunked_transfer_encoding on;
 
     location / {
-      # auth_basic "Registry realm";
-      # auth_basic_user_file /etc/nginx/conf.d/nginx.htpasswd;
-
       proxy_http_version 1.1;
       proxy_set_header   Upgrade \$http_upgrade;
       proxy_set_header   Connection \$connection_upgrade;
@@ -60,13 +74,13 @@ http {
     }
 
     location ^~ /restart {
-      # auth_basic "Registry realm";
-      # auth_basic_user_file /etc/nginx/conf.d/nginx.htpasswd;
       proxy_pass         http://127.0.0.1:8082/stop;
     }
 
+    error_page 502 ${NGINX_HTML_FILE};  # Use custom 502.html page
   }
 }
 EOF
 
-echo ${NGINX_CONF_MD5SUM} | md5sum -c || (echo config changed, so restarting nginx; systemctl restart nginx)
+# Check if the configuration has changed, and restart Nginx if needed
+echo ${NGINX_CONF_MD5SUM} | md5sum -c || (echo "Config changed, restarting Nginx"; systemctl restart nginx)
