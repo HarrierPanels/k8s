@@ -11,7 +11,6 @@ curl -s https://raw.githubusercontent.com/HarrierPanels/k8s/main/deploy.sh | bas
 ```
 #!/bin/bash
 
-# t2.micro setup
 # Swap 4 Gb
 dd if=/dev/zero of=/swapfile bs=128M count=32
 chmod 600 /swapfile
