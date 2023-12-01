@@ -6,6 +6,7 @@ else
   CMD=""
 fi
 
+export EXTERNAL_NAME=$(curl -s checkip.amazonaws.com)
 BASE_URL="https://raw.githubusercontent.com/HarrierPanels/k8s/main"
 SCRIPTS=("install-docker.sh" "install-nginx.sh" "install-playpit.sh")
 
