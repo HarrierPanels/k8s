@@ -5,7 +5,6 @@ if [ $(id -u) -ne 0 ]; then
     exit $?
 fi
 
-EXTERNAL_NAME=$(curl -s checkip.amazonaws.com)
 DOMAIN_NAME=${EXTERNAL_NAME:-$(hostname -f)}
 echo "DOMAIN_NAME=${DOMAIN_NAME}"
 echo "EXTERNAL_NAME=${EXTERNAL_NAME}"
