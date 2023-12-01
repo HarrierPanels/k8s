@@ -90,13 +90,3 @@ EOF
 
 # Check if the configuration has changed, and restart Nginx if necessary
 echo ${NGINX_CONF_MD5SUM} | md5sum -c || (echo "Config changed, restarting Nginx"; systemctl restart nginx)
-
-if [ "$SSL" == "yes" ]; then
-  echo "Letsencrypt job"
-  snap install --classic certbot
-  ln -s /snap/bin/certbot /usr/bin/certbot
-  snap set certbot trust-plugin-with-root=ok
-  if [ ! -f /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem ]; then
-    certbot --nginx --register-unsafely-without-email --agree-tos -d ${DOMAIN_NAME} -d www.${DOMAIN_NAME}
-  fi
-fi
