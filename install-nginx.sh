@@ -26,8 +26,10 @@ cat << EOF > ${NGINX_HTML_FILE}
 <head>
   <title>PlayPit Labs shutting down</title>
 </head>
-<body>
-  <h1>PlayPit Labs shutting down</h1>
+<body style="text-align: center;">
+    <div>
+        <h4 style="color: lightgray; padding: 0.6em; position: relative; text-align: center;">Wait while PlayPit Labs Login Page Loading...</h4>
+    </div>
 </body>
 </html>
 EOF
@@ -88,3 +90,13 @@ EOF
 
 # Check if the configuration has changed, and restart Nginx if necessary
 echo ${NGINX_CONF_MD5SUM} | md5sum -c || (echo "Config changed, restarting Nginx"; systemctl restart nginx)
+
+if [ "$SSL" == "yes" ]; then
+  echo "Letsencrypt job"
+  snap install --classic certbot
+  ln -s /snap/bin/certbot /usr/bin/certbot
+  snap set certbot trust-plugin-with-root=ok
+  if [ ! -f /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem ]; then
+    certbot --nginx --register-unsafely-without-email --agree-tos -d ${DOMAIN_NAME} -d www.${DOMAIN_NAME}
+  fi
+fi
