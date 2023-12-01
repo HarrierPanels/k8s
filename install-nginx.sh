@@ -27,9 +27,9 @@ cat << EOF > ${NGINX_HTML_FILE}
   <title>Wait while PlayPit Labs Login Page Loading...</title>
 </head>
 <body style="text-align: center;">
-    <div>
-        <h4 style="color: lightgray; padding: 0.6em; position: relative;">Wait while PlayPit Labs Login Page Loading...</h4>
-    </div>
+    <div><center>
+        <h4 style="color: lightred; padding: 0.2em; position: relative;">Wait while PlayPit Labs Login Page Loading...</h4>
+    </center></div>
 </body>
 </html>
 EOF
