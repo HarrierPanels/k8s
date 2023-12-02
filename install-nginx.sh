@@ -46,7 +46,6 @@ cat << EOF > ${NGINX_HTML_FILE}
     <h4>Wait while PlayPit Labs Login Page Loading...</h4>
 </body>
 </html>
-
 EOF
 
 # Update the Nginx configuration
