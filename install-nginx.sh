@@ -21,14 +21,32 @@ NGINX_HTML_FILE="${NGINX_HTML_DIR}/502.html"
 # Create or update the 502.html file
 cat << EOF > ${NGINX_HTML_FILE}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>loading ...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wait while PlayPit Labs Login Page Loading...</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h4 {
+            color: cyan;
+            padding: 0.6em;
+            text-align: center;
+        }
+    </style>
 </head>
-<body style="background-color: #0000007a;">
-  <h4 style="color: lightgray; padding: 0.6em; position: relative; text-align: center;">Wait while PlayPit Labs Login Page Loading ...</h4>
+<body>
+    <h4>Wait while PlayPit Labs Login Page Loading...</h4>
 </body>
 </html>
+
 EOF
 
 # Update the Nginx configuration
