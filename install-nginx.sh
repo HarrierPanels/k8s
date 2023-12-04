@@ -25,15 +25,16 @@ cat << EOF > ${NGINX_HTML_FILE}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5">
+    <meta http-equiv="refresh" content="90">
     <title>Wait while PlayPit Labs Login Page Loading...</title>
     <style>
         body {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 1000vh;
+            height: 100vh;
             margin: 0;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         h4 {
