@@ -41,6 +41,7 @@ cat << EOF > ${NGINX_HTML_FILE}
             color: cyan;
             padding: 0.6em;
             text-align: center;
+            font-size: 17pt;
         }
     </style>
 </head>
