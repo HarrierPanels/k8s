@@ -31,7 +31,7 @@ cat << EOF > ${NGINX_HTML_FILE}
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 1000vh;
             margin: 0;
         }
 
