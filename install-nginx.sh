@@ -33,7 +33,7 @@ cat << EOF > ${NGINX_HTML_FILE}
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
+            margin: 10;
             background-color: rgba(0, 0, 0, 0.5);
         }
 
