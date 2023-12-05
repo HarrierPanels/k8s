@@ -33,10 +33,11 @@ cat << EOF > ${NGINX_HTML_FILE}
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 10;
+            margin: 0;
             background-color: rgba(0, 0, 0, 0.5);
+            background-image: url('http://practice.playpit.net/images/wall.jpg'); /* Add background image */
+            background-size: cover; /* Ensure the background image covers the entire screen */            
         }
-
         h4 {
             color: cyan;
             padding: 0.6em;
